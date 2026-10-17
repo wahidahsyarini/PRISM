@@ -1,6 +1,6 @@
 <?php
 // This is a single-line comment using double slashes
-echo "Try sat"; // You can also put it at the end of a line
+echo "Try sat "; // You can also put it at the end of a line
 
 # This is a single-line comment using a hash symbol
 $value = 10;
