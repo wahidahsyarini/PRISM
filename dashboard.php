@@ -38,5 +38,6 @@ if (empty($_SESSION['user_id'])) {
   <div id="overlay-root" class="hidden"></div>
   <div id="toast-root" aria-live="polite"></div>
   <script src="js/dashboard.js"></script>
+  <script src="js/login.js"></script>
 </body>
 </html>

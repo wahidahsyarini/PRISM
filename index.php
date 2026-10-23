@@ -59,7 +59,7 @@
       <!-- LOGIN FORM -->
       <form id="login-form" class="space-y-4">
 
-        <!-- USERNAME -->
+      <!-- USERNAME -->
         <div class="mt-4 text-left">
 
           <label
@@ -80,6 +80,22 @@
           >
 
         </div>
+
+        <!-- ROLE DROPDOWN -->
+        <div class="mt-4 text-left">
+
+          <label class="label" for="login-role">Select Role</label>
+
+<select id="login-role" name="role" class="field" required>
+  <option value="" disabled selected>Select your role</option>
+  <option value="Shop Admin">Shop Admin</option>
+  <option value="Technician">Technician</option>
+  <option value="Salesperson">Salesperson</option>
+</select>
+            
+
+        </div>
+
 
         <!-- PASSWORD -->
         <div class="mt-4 text-left">

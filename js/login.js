@@ -5,6 +5,9 @@ const feedback = document.querySelector("#login-feedback");
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
+  // ADDED: Get selected role
+  const role = document.querySelector("#login-role").value;
+
   const username = document
     .querySelector("#demo-username")
     .value.trim();
@@ -17,9 +20,10 @@ loginForm.addEventListener("submit", async function (event) {
   feedback.className =
     "text-sm mt-3 text-red-600 min-h-[20px]";
 
-  if (!username || !password) {
+  // ADDED: Validate role together with username and password
+  if (!role || !username || !password) {
     feedback.textContent =
-      "Please enter your username and password.";
+      "Please select your role and enter your username and password.";
     return;
   }
 
@@ -37,6 +41,8 @@ loginForm.addEventListener("submit", async function (event) {
       },
       credentials: "same-origin",
       body: JSON.stringify({
+        // ADDED: Send selected role to PHP
+        role: role,
         username: username,
         password: password
       })
@@ -58,7 +64,7 @@ loginForm.addEventListener("submit", async function (event) {
 
     } else {
 
-      // Username atau password salah
+      // Username, password atau role salah
       feedback.className =
         "text-sm mt-3 text-red-600 min-h-[20px]";
 

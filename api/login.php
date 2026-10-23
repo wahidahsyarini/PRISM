@@ -27,11 +27,18 @@ if (!is_array($input)) {
     respond(400, ['success' => false, 'message' => 'Invalid request.']);
 }
 
+// TAMBAH ROLE: Get selected role
+$role = trim((string)($input['role'] ?? ''));
+
 $username = trim((string)($input['username'] ?? ''));
 $password = $input['password'] ?? '';
 
-if ($username === '' || !is_string($password) || $password === '') {
-    respond(400, ['success' => false, 'message' => 'Username and password are required.']);
+// TAMBAH ROLE: Require selected role
+if ($role === '' || $username === '' || !is_string($password) || $password === '') {
+    respond(400, [
+        'success' => false,
+        'message' => 'Role, username and password are required.'
+    ]);
 }
 
 if (strlen($username) > 120 || strlen($password) > 4096) {
@@ -69,6 +76,14 @@ if (
     respond(401, [
         'success' => false,
         'message' => 'Invalid username or password.'
+    ]);
+}
+
+// TAMBAH ROLE: Compare selected role with database role
+if ($user['role'] !== $role) {
+    respond(401, [
+        'success' => false,
+        'message' => 'Invalid login credentials.'
     ]);
 }
 
